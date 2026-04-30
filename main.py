@@ -1,5 +1,4 @@
 from utils.menu import print_menu
-from services.room_service import view_rooms
 
 
 def main():
@@ -18,7 +17,7 @@ def main():
         elif choice == "5":
             print("Option 5 selected")
         elif choice == "6":
-            view_rooms()
+            print("Option 6 selected")
         elif choice.lower() == "x":
             print("Exiting application...")
             break
@@ -26,7 +25,6 @@ def main():
             print("Invalid choice")
 
         print()
-
 
 if __name__ == "__main__":
     main()
