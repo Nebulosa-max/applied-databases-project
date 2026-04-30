@@ -1,6 +1,7 @@
 """Main application file for the Applied Databases Project."""
 
 from utils.menu import print_menu
+from services.speaker_service import view_speakers_and_sessions
 from services.room_service import view_rooms
 
 
@@ -11,7 +12,7 @@ def main():
         choice = input("Choice: ").strip()
 
         if choice == "1":
-            print("View Speakers & Sessions selected")
+            view_speakers_and_sessions()
 
         elif choice == "2":
             print("View Attendees by Company selected")
