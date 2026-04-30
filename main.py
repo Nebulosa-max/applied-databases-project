@@ -2,6 +2,7 @@
 
 from utils.menu import print_menu
 from services.speaker_service import view_speakers_and_sessions
+from services.attendee_service import view_attendees_by_company
 from services.room_service import view_rooms
 
 
@@ -15,7 +16,7 @@ def main():
             view_speakers_and_sessions()
 
         elif choice == "2":
-            print("View Attendees by Company selected")
+            view_attendees_by_company()
 
         elif choice == "3":
             print("Add New Attendee selected")

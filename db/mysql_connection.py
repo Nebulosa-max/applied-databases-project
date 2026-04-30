@@ -4,18 +4,24 @@ This file contains the function used to connect the Python application
 to the MySQL database.
 """
 
+import os
+
 import mysql.connector
+from dotenv import load_dotenv
 from mysql.connector import Error
+
+
+load_dotenv()
 
 
 def get_mysql_connection():
     """Create and return a connection to the MySQL database."""
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database="conference_db"
+            host=os.getenv("MYSQL_HOST", "localhost"),
+            user=os.getenv("MYSQL_USER", "root"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE", "conference_db")
         )
 
         if connection.is_connected():
