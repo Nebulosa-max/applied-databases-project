@@ -73,3 +73,89 @@ def view_attendees_by_company():
         if connection.is_connected():
             cursor.close()
             connection.close()
+
+
+def add_new_attendee():
+    """Add a new attendee to the MySQL database."""
+    connection = get_mysql_connection()
+
+    if connection is None:
+        print("Could not connect to the MySQL database.")
+        return
+
+    try:
+        cursor = connection.cursor()
+
+        attendee_id = input("Enter attendee ID: ").strip()
+        attendee_name = input("Enter attendee name: ").strip()
+        dob = input("Enter date of birth (YYYY-MM-DD): ").strip()
+        gender = input("Enter gender: ").strip()
+        company_id = input("Enter company ID: ").strip()
+
+        if not attendee_id.isdigit() or int(attendee_id) <= 0:
+            print("Invalid attendee ID. Please enter a number greater than 0.")
+            return
+
+        if not attendee_name:
+            print("Attendee name cannot be empty.")
+            return
+
+        if not company_id.isdigit() or int(company_id) <= 0:
+            print("Invalid company ID. Please enter a number greater than 0.")
+            return
+
+        check_attendee_query = """
+            SELECT attendee_id
+            FROM attendees
+            WHERE attendee_id = %s;
+        """
+        cursor.execute(check_attendee_query, (attendee_id,))
+        existing_attendee = cursor.fetchone()
+
+        if existing_attendee is not None:
+            print("Attendee ID already exists.")
+            return
+
+        check_company_query = """
+            SELECT company_id
+            FROM companies
+            WHERE company_id = %s;
+        """
+        cursor.execute(check_company_query, (company_id,))
+        existing_company = cursor.fetchone()
+
+        if existing_company is None:
+            print("Company ID does not exist.")
+            return
+
+        insert_query = """
+            INSERT INTO attendees (
+                attendee_id,
+                attendee_name,
+                dob,
+                gender,
+                company_id
+            )
+            VALUES (%s, %s, %s, %s, %s);
+        """
+
+        values = (
+            attendee_id,
+            attendee_name,
+            dob,
+            gender,
+            company_id
+        )
+
+        cursor.execute(insert_query, values)
+        connection.commit()
+
+        print("Attendee successfully added.")
+
+    except Exception as error:
+        print(f"Error adding attendee: {error}")
+
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
