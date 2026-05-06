@@ -1,23 +1,37 @@
-"""Neo4j database connection module.
-
-This file contains the function used to connect the Python application
-to the Neo4j graph database.
-"""
-
 from neo4j import GraphDatabase
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+NEO4J_URI = os.getenv("NEO4J_URI")
+NEO4J_USER = os.getenv("NEO4J_USER")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
+NEO4J_DATABASE = os.getenv("NEO4J_DATABASE")
 
 
 def get_neo4j_driver():
-    """Create and return a Neo4j database driver."""
-    uri = "bolt://localhost:7687"
-    username = "neo4j"
-    password = "password"
+    return GraphDatabase.driver(
+        NEO4J_URI,
+        auth=(NEO4J_USER, NEO4J_PASSWORD)
+    )
 
+
+def test_neo4j_connection():
     try:
-        driver = GraphDatabase.driver(uri, auth=(username, password))
-        driver.verify_connectivity()
-        return driver
+        driver = get_neo4j_driver()
 
-    except Exception as error:
-        print(f"Neo4j connection error: {error}")
-        return None
+        with driver.session(database=NEO4J_DATABASE) as session:
+            result = session.run("RETURN 'Neo4j connection successful!' AS message")
+            record = result.single()
+            print(record["message"])
+
+        driver.close()
+
+    except Exception as e:
+        print("Neo4j connection failed.")
+        print(e)
+
+
+if __name__ == "__main__":
+    test_neo4j_connection()

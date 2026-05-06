@@ -4,7 +4,7 @@ from utils.menu import print_menu
 from services.speaker_service import view_speakers_and_sessions
 from services.attendee_service import view_attendees_by_company, add_new_attendee
 from services.room_service import view_rooms
-
+from services.connection_service import view_connected_attendees
 
 def main():
     """Run the main menu loop for the application."""
@@ -20,9 +20,9 @@ def main():
 
         elif choice == "3":
             add_new_attendee()
-
+        
         elif choice == "4":
-            print("View Connected Attendees selected")
+         view_connected_attendees()
 
         elif choice == "5":
             print("Add Attendee Connection selected")
