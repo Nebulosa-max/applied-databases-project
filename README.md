@@ -277,7 +277,38 @@ The project repository is available at:
 https://github.com/Nebulosa-max/applied-databases-project
 ```
 
+------
+
+## Use of Artificial Intelligence
+
+Artificial Intelligence tools were used as support during the development of this project.
+
+AI was used to help with:
+
+- understanding project requirements
+- planning the project structure
+- debugging Python, MySQL and Neo4j connection issues
+- improving code organisation
+- writing and improving documentation
+- reviewing error messages and suggesting possible fixes
+
+All code was reviewed, tested and adapted by the student before being included in the final project.
+
+The final implementation, testing, database setup, GitHub commits and project submission were completed by the student.
+
 ---
+
+## References
+
+The following resources were used to support the development of this project:
+
+- Python Software Foundation. Python Documentation. Available at: https://docs.python.org/3/
+- MySQL. MySQL Connector/Python Developer Guide. Available at: https://dev.mysql.com/doc/connector-python/en/
+- Neo4j. Neo4j Python Driver Manual. Available at: https://neo4j.com/docs/python-manual/current/
+- Neo4j. Cypher Query Language Documentation. Available at: https://neo4j.com/docs/cypher-manual/current/
+- python-dotenv Documentation. Available at: https://pypi.org/project/python-dotenv/
+- GitHub Docs. About repositories. Available at: https://docs.github.com/en/repositories
+- OpenAI ChatGPT. Used as an AI support tool for debugging, project planning and documentation assistance.
 
 ## Author
 
