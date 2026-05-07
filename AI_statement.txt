@@ -1,0 +1,9 @@
+Artificial Intelligence Statement
+
+Artificial Intelligence tools were used as support during the development of this project.
+
+AI was used to help with understanding project requirements, planning the project structure, debugging Python, MySQL and Neo4j connection issues, improving code organisation, writing documentation and reviewing error messages.
+
+All code was reviewed, tested and adapted by the student before being included in the final project.
+
+The final implementation, database setup, testing, GitHub commits and project submission were completed by the student.

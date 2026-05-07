@@ -1,0 +1,24 @@
+cat > references.txt <<'EOF'
+References
+
+Python Software Foundation. Python Documentation.
+Available at: https://docs.python.org/3/
+
+MySQL. MySQL Connector/Python Developer Guide.
+Available at: https://dev.mysql.com/doc/connector-python/en/
+
+Neo4j. Neo4j Python Driver Manual.
+Available at: https://neo4j.com/docs/python-manual/current/
+
+Neo4j. Cypher Query Language Documentation.
+Available at: https://neo4j.com/docs/cypher-manual/current/
+
+python-dotenv Documentation.
+Available at: https://pypi.org/project/python-dotenv/
+
+GitHub Docs. About repositories.
+Available at: https://docs.github.com/en/repositories
+
+OpenAI ChatGPT.
+Used as an AI support tool for debugging, project planning and documentation assistance.
+EOF
